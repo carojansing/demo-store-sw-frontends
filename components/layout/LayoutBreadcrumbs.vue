@@ -6,6 +6,7 @@ const { breadcrumbs } = useBreadcrumbs();
     class="hidden lg:flex max-w-screen-xl mx-auto mt-8 mb-8 px-4 sm:px-6"
     aria-label="Breadcrumb"
   >
+
     <ol class="inline-flex items-center space-x-1 md:space-x-3">
       <li class="inline-flex items-center">
         <NuxtLink
