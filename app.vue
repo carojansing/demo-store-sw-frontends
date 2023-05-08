@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import { getSessionContext } from "@shopware-pwa/api-client";
+import { SessionContext } from "@shopware-pwa/types";
+
+/**
+ * Init breadcrumbs context
+ */
+useBreadcrumbs();
+
+useHead({
+  title: "Shopware Demo store",
+  meta: [{ name: "description", content: "Shopware Demo store" }],
+  htmlAttrs: {
+    lang: "en",
+  },
+});
+
+const { apiInstance } = useShopwareContext();
+const { data: sessionContextData } = await useAsyncData(
+  "sessionContext",
+  async () => {
+    return await getSessionContext(apiInstance);
+  }
+);
+useSessionContext(sessionContextData.value as SessionContext);
+
+const { getWishlistProducts } = useWishlist();
+const { refreshCart } = useCart();
+
+useNotifications();
+useAddress();
+
+onMounted(() => {
+  refreshCart();
+  getWishlistProducts();
+});
+</script>
+
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+</template>
+
+<style>
+body {
+  font-family: 'Brother1816', serif;
+}
+
+h2 {
+  @apply text-4xl py-4;
+}
+
+select {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIGZpbGw9J25vbmUnIHZpZXdCb3g9JzAgMCAyMCAyMCc+PHBhdGggc3Ryb2tlPScjNmI3MjgwJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIHN0cm9rZS13aWR0aD0nMS41JyBkPSdNNiA4bDQgNCA0LTQnLz48L3N2Zz4=");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  appearance: none;
+}
+
+@font-face {
+  font-family: 'Brother1816';
+  src: url('~/assets/fonts/Brother1816-Regular.ttf') format('opentype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Brother1816';
+  src: url('~/assets/fonts/Brother1816-Light.ttf') format('opentype');
+  font-weight: 300;
+}
+</style>
