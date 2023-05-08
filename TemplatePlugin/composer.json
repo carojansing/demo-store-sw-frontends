@@ -1,0 +1,48 @@
+{
+    "name": "basecom/sw6-template-plugin",
+    "description": "basecom Template Plugin",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "basecom GmbH & Co. KG",
+            "email": "info@basecom.de",
+            "homepage": "https://basecom.de",
+            "role": "Manufacturer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Basecom\\TemplatePlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Basecom\\TemplatePlugin\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Basecom\\TemplatePlugin\\BasecomTemplatePlugin",
+        "label": {
+            "de-DE": "basecom Template Plugin",
+            "en-GB": "basecom Template Plugin"
+        },
+        "copyright": "(c) basecom GmbH & Co. KG",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "description": {
+            "de-DE": "Beschreibung des Plugins",
+            "en-GB": "Description of the plugin"
+        }
+    },
+    "require": {
+      "shopware/core": "6.4.*",
+      "shopware/administration": "6.4.*",
+      "shopware/storefront": "6.4.*"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^1.4",
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.18"
+    }
+}

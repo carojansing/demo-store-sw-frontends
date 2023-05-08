@@ -1,0 +1,4 @@
+services:
+#  Basecom\TemplatePlugin\ClassIWantToMock:
+#    public: true
+#    synthetic: true
